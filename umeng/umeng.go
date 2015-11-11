@@ -2,10 +2,10 @@ package umeng
 
 import (
 	"fmt"
+	"strings"
 	"crypto/md5"
 	"encoding/hex"
 	"github.com/smartwalle/going/http"
-	"strings"
 )
 
 const (
