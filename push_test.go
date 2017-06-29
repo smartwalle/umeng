@@ -25,8 +25,8 @@ func Test_Android(t *testing.T) {
 	payload.SetPlayVibrate(true)
 	payload.SetAfterOpen("go_url", "http://www.baidu.com")
 
-	//var message = NewUMengMessage("53ec8886fd98c587cc001ff5", "igfoqmis3wvz82sblekbvtdtjvep5ayy", UMENG_MESSAGE_TYPE_UNICAST, false)
-	//message.DeviceTokens = "Ag-YlpXmICyhAhsEMrNMJhV-KQjSQCY61D8j1izNxkj3"
-	//message.Payload = payload
-	//fmt.Println(PushMessage(message))
+	var message = NewUMengMessage("53ec8886fd98c587cc001ff5", "mhwhjrp2i1vqzy1cz3ecj8xpkxiovag0", UMENG_MESSAGE_TYPE_UNICAST, false)
+	message.DeviceTokens = "Ag-YlpXmICyhAhsEMrNMJhV-KQjSQCY61D8j1izNxkj3"
+	message.Payload = payload
+	fmt.Println(PushMessage(message))
 }

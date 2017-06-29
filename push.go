@@ -47,8 +47,6 @@ func PushMessage(message *UMengMessage) (results map[string]interface{}) {
 	var buf = bytes.NewBuffer(b)
 	var sign = md5Sign("POST", UMENG_MSG_SEND_API_URL, string(b), message.AppSecret)
 
-	fmt.Println(string(b))
-
 	req, err := http.NewRequest("POST", UMENG_MSG_SEND_API_URL+"?sign="+sign, buf)
 	if err != nil {
 		return nil

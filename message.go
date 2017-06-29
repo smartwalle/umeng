@@ -13,6 +13,7 @@ const (
 	UMENG_MESSAGE_TYPE_CUSTOMIZEDCAST = "customizedcast"
 )
 
+////////////////////////////////////////////////////////////////////////////////
 // UMengMessage
 type UMengMessage struct {
 	AppKey         string 			        `json:"appkey"`
@@ -45,16 +46,7 @@ func NewUMengMessage(appKey, appSecret, mType string, production bool) *UMengMes
 	return message
 }
 
-//func (this *UMengMessage) JSON() string {
-//	var bytes, _ = json.Marshal(this)
-//	return string(bytes)
-//}
-//
-//func (this *UMengMessage) String() string {
-//	return this.JSON()
-//}
-
-
+////////////////////////////////////////////////////////////////////////////////
 // UMengiOSPayload
 type UMengiOSPayload map[string]interface{}
 
