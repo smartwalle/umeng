@@ -19,13 +19,13 @@ type UMengMessage struct {
 	AppSecret      string                   `json:"-"`
 	Timestamp      int64 	                `json:"timestamp"`
 	Type           string                   `json:"type"`
-	DeviceTokens   string                   `json:"device_tokens"`
-	AliasType      string                   `json:"alias_type"`
-	Alias          string                   `json:"alias"`
-	FileId         string                   `json:"file_id"`
-	ProductionMode string                   `json:"production_mode"`
-	Description    string                   `json:"description"`
-	ThirdPartyId   string                   `json:"thirdparty_id"`
+	DeviceTokens   string                   `json:"device_tokens,omitempty"`
+	AliasType      string                   `json:"alias_type,omitempty"`
+	Alias          string                   `json:"alias,omitempty"`
+	FileId         string                   `json:"file_id,omitempty"`
+	ProductionMode string                   `json:"production_mode,omitempty"`
+	Description    string                   `json:"description,omitempty"`
+	ThirdPartyId   string                   `json:"thirdparty_id,omitempty"`
 	Payload        map[string]interface{}   `json:"payload"`
 }
 

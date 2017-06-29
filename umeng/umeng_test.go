@@ -11,7 +11,7 @@ func Test_iOS(t *testing.T) {
 	payload.SetBadge(11)
 	payload.Set("url", "http://www.baidu.com")
 	payload.Set("type", "8")
-	fmt.Println(PushBroadcastMessage("55a37b3c67e58ecf6d001bc5", "rvs9vjiqrz0eyzqtdc9qz2qswriglgpz", false, payload))
+	fmt.Println(PushBroadcastMessage("5343542e56240b5a2324f4d5", "igfoqmis3wvz82sblekbvtdtjvep5ayy", false, payload))
 }
 
 func Test_Android(t *testing.T) {
@@ -25,9 +25,8 @@ func Test_Android(t *testing.T) {
 	payload.SetPlayVibrate(true)
 	payload.SetAfterOpen("go_url", "http://www.baidu.com")
 
-	var message = NewUMengMessage("53ec8886fd98c587cc001ff5", "991b07edd5d1d6a8a8d1d053f0763b70", UMENG_MESSAGE_TYPE_UNICAST, false)
-	message.DeviceTokens = "Ag-YlpXmICyhAhsEMrNMJhV-KQjSQCY61D8j1izNxkj3"
-	message.Payload = payload
-
-	fmt.Println(PushMessage(message))
+	//var message = NewUMengMessage("53ec8886fd98c587cc001ff5", "igfoqmis3wvz82sblekbvtdtjvep5ayy", UMENG_MESSAGE_TYPE_UNICAST, false)
+	//message.DeviceTokens = "Ag-YlpXmICyhAhsEMrNMJhV-KQjSQCY61D8j1izNxkj3"
+	//message.Payload = payload
+	//fmt.Println(PushMessage(message))
 }

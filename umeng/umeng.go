@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
-	"io"
 	"bytes"
 )
 
@@ -37,28 +36,20 @@ func PushBroadcastMessage(appKey, appSecret string, productionMode bool, payload
 }
 
 func PushMessage(message *UMengMessage) (results map[string]interface{}) {
-	//var sign = sign("POST", UMENG_MSG_SEND_API_URL, message.JSON(), message.AppSecret)
-	//var client = http.NewClient()
-	//client.SetMethod("POST")
-	//client.SetURLString(UMENG_MSG_SEND_API_URL+"?sign="+sign)
-	//client.SetBody(message.JSON())
-	//
-	//var results, _ = client.DoJsonRequest()
-	//return results
-
-	var signStr string
-	var buf io.Reader
-	if message != nil {
-		b, err := json.Marshal(message)
-		if err != nil {
-			return nil
-		}
-		buf = bytes.NewBuffer(b)
-		signStr = sign("POST", UMENG_MSG_SEND_API_URL, string(b), message.AppSecret)
+	if message == nil {
+		return nil
 	}
 
+	b, err := json.Marshal(message)
+	if err != nil {
+		return nil
+	}
+	var buf = bytes.NewBuffer(b)
+	var sign = md5Sign("POST", UMENG_MSG_SEND_API_URL, string(b), message.AppSecret)
 
-	req, err := http.NewRequest("POST", UMENG_MSG_SEND_API_URL+"?sign="+signStr, buf)
+	fmt.Println(string(b))
+
+	req, err := http.NewRequest("POST", UMENG_MSG_SEND_API_URL+"?sign="+sign, buf)
 	if err != nil {
 		return nil
 	}
@@ -80,7 +71,7 @@ func PushMessage(message *UMengMessage) (results map[string]interface{}) {
 	return results
 }
 
-func sign(method, url, postBody, appSecret string) string {
+func md5Sign(method, url, postBody, appSecret string) string {
 	var sign = fmt.Sprintf("%s%s%s%s", method, url, postBody, appSecret)
 	var m = md5.New()
 	m.Write([]byte(sign))
