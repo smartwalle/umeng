@@ -2,7 +2,6 @@ package umeng
 
 import (
 	"time"
-	"encoding/json"
 )
 
 const (
@@ -46,14 +45,14 @@ func NewUMengMessage(appKey, appSecret, mType string, production bool) *UMengMes
 	return message
 }
 
-func (this *UMengMessage) JSON() string {
-	var bytes, _ = json.Marshal(this)
-	return string(bytes)
-}
-
-func (this *UMengMessage) String() string {
-	return this.JSON()
-}
+//func (this *UMengMessage) JSON() string {
+//	var bytes, _ = json.Marshal(this)
+//	return string(bytes)
+//}
+//
+//func (this *UMengMessage) String() string {
+//	return this.JSON()
+//}
 
 
 // UMengiOSPayload
